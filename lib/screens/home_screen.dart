@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'report_screen.dart'; // Import the new screen
+import 'police_screen.dart'; // Import Police Screen
+import 'fire_screen.dart';   // Import Fire Screen
+import 'ambulance_screen.dart'; // Import Ambulance Screen
+import 'report_screen.dart'; // Import Report Emergency Screen
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,15 +13,59 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Emergency Response'),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               'Select an Emergency Type',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            SizedBox(height: 30),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PoliceScreen()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blue,
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 50),
+              ),
+              child: Text('Police'),
             ),
             SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => FireScreen()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.orange,
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 50),
+              ),
+              child: Text('Fire'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AmbulanceScreen()),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 50),
+              ),
+              child: Text('Ambulance'),
+            ),
+            SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -28,7 +75,7 @@ class HomeScreen extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 50),
               ),
               child: Text('Report Emergency'),
             ),
